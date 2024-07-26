@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
-from django.shortcuts import render, reverse
+from django.shortcuts import redirect, render, reverse
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -20,7 +20,7 @@ class IndexView(TemplateView):
 @method_decorator([login_required, require_GET], name='dispatch')
 class DashboardView(View):
     def get(self, request):
-        return render(request, template_name='auth_service/dashboard')
+        return render(request, template_name='auth_service/dashboard.html')
 
 
 @method_decorator(require_http_methods(['GET', 'POST']), name='dispatch')
@@ -63,4 +63,4 @@ class LoginView(FormView):
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        return reverse('auth_service:index')
+        return redirect(reverse('auth_service:index'))
