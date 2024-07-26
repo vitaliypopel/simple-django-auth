@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block context %}
+    <h2>Home</h2>
+    <p>URLs:</p>
+    <ul>
+        <li>
+            <a href="{% url auth_service:index %}">Home</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li>
+            <a href="{% url auth_service:dashboard %}">Dashboard</a>
+        </li>
+        <li>
+            <a href="{% url auth_service:logout %}">Logout</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="{% url auth_service:registration %}">Registration</a>
+        </li>
+        <li>
+            <a href="{% url auth_service:login %}">Login</a>
+        </li>
+        {% endif %}
+    </ul>
+{% endblock %}
