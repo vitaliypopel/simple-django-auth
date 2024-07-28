@@ -5,22 +5,11 @@
 {% endblock %}
 
 {% block context %}
+    {% load crispy_forms_tags %}
     <h2>Registration</h2>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Register">
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-primary" value="Register">
     </form>
-    {% if form.errors %}
-        <ul>
-            {% for field in form %}
-                {% for error in field.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            {% endfor %}
-            {% for error in form.non_field_errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 {% endblock %}
