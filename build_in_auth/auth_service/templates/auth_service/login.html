@@ -6,7 +6,7 @@
 
 {% block context %}
     {% load crispy_forms_tags %}
-    <h2>Login</h2>
+    <h2 class="mt-3 mb-3" align="center">Login</h2>
     <form method="POST">
         {% csrf_token %}
         {{ form|crispy }}
