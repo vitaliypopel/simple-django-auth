@@ -12,7 +12,7 @@ python3 -m venv venv
 source venv/bin/activate
 python3 -m pip install -r requirements.txt
 
-cd simple-django-auth/build_in_auth
+cd build_in_auth
 python3 manage.py runserver
 ```
 
